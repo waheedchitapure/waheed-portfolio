@@ -1,330 +1,530 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title> Responsive Portfolio Website | Waheed-Chitapure </title>
-    <link rel="stylesheet" href="./style.css">
-    <!-- Fontawesome CDN Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waheed Chitapure — React & Frontend Developer</title>
+  <meta name="description" content="Waheed Chitapure — React & Frontend Developer in Pune. Responsive web design, React dashboards, landing pages and AI-assisted development.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
 
-    <!-- Move to up bottom -->
-    <div class="scroll-button">
-        <a href="#home"><i class="fas fa-arrow-up"></i></a>
+  <!-- Intro loader -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__log mono">
+      <p>&gt; npm run portfolio</p>
+      <p>&gt; loading projects…</p>
+      <p>&gt; waking up the AI agents…</p>
+      <p>&gt; ready ✓</p>
+    </div>
+    <div class="loader__count"><span id="count">0</span>%</div>
+  </div>
+
+  <div class="cursor" aria-hidden="true"><span class="cursor__label">View</span></div>
+
+  <header class="nav">
+    <a href="#home" class="nav__logo">WC<span>.</span></a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#work">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#code">Code</a>
+      <a href="#journey">Experience</a>
+      <a href="#contact" class="nav__cta magnetic">Hire me</a>
+    </nav>
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <div class="mobile-menu" aria-hidden="true">
+    <a href="#about">About</a>
+    <a href="#work">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#code">Code</a>
+    <a href="#journey">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <div class="hero__glow"></div>
+      <div class="hero__grid" aria-hidden="true"></div>
+
+      <div class="hero__photo">
+        <img src="images/waheed.webp" alt="Waheed Chitapure" width="768" height="1024">
+        <span class="badge b1 mono">⚛ React</span>
+        <span class="badge b2 mono">🎨 UI Design</span>
+        <span class="badge b3 mono">JS JavaScript</span>
+        <span class="badge b4 mono">🤖 AI-powered</span>
+      </div>
+
+      <p class="hero__eyebrow mono"><span class="dot"></span> React &amp; Frontend Developer · Open to work · Pune</p>
+
+      <h1 class="hero__title">
+        <span class="line"><span class="word">Waheed</span></span>
+        <span class="line"><span class="word serif">Chitapure</span></span>
+      </h1>
+
+      <div class="hero__bottom">
+        <p class="hero__lead">
+          I design and build <em>fast, clean web interfaces</em> in React — dashboards, tools and landing pages that look sharp on every screen — and I use AI to build faster.
+        </p>
+        <div class="hero__roles mono">
+          <span>I'm a</span>
+          <span class="roles"><span class="roles__item">React Developer</span><span class="roles__item">Frontend Developer</span><span class="roles__item">Web Designer</span><span class="roles__item">UI Builder</span><span class="roles__item">AI-powered Developer</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>React</span><b>✦</b><span>JavaScript</span><b>✦</b><span>HTML5</span><b>✦</b><span>CSS3</span><b>✦</b><span>Responsive Design</span><b>✦</b><span>UI Design</span><b>✦</b><span>GSAP</span><b>✦</b><span>Landing Pages</span><b>✦</b><span>Claude Code</span><b>✦</b><span>AI Agents</span><b>✦</b>
+        <span>React</span><b>✦</b><span>JavaScript</span><b>✦</b><span>HTML5</span><b>✦</b><span>CSS3</span><b>✦</b><span>Responsive Design</span><b>✦</b><span>UI Design</span><b>✦</b><span>GSAP</span><b>✦</b><span>Landing Pages</span><b>✦</b><span>Claude Code</span><b>✦</b><span>AI Agents</span><b>✦</b>
+      </div>
     </div>
 
-    <!-- navigation menu -->
-    <nav>
-        <div class="navbar">
-            
-            <div class="logo"><a href="#">Portfolio.</a></div>
-            <ul class="menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-
-                <li><a href="#contact">Contact</a></li>
-                <div class="cancel-btn">
-                    <i class="fas fa-times"></i>
-                </div>
-            </ul>
-            <div class="media-icons">
-                <a href="https://www.linkedin.com/in/waheedchitapure/"> <i class="fab fa-linkedin-in"></i></i>
-                </a>
-
-
-                <a href="https://www.instagram.com/codewithwaheed/"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-        <div class="menu-btn">
-            <i class="fas fa-bars"></i>
-        </div>
-    </nav>
-
-    <!-- Home Section Start -->
-    <section class="home" id="home">
-        <div class="home-content">
-            <div class="text">
-                <div class="text-one">Hello,</div>
-                <div class="text-two">I'm Waheed Chitapure</div>
-
-
-
-                <div class="text-three">
-                    I'm a
-                    <span id="type1"></span>
-
-                </div>
-
-
-                <div class="text-four">Pune, India</div>
-
-
-
-
-
-
-
-
-
-            </div>
-            <div class="button">
-                <button>Hire Me</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section Start -->
+    <!-- ============ ABOUT ============ -->
     <section class="about" id="about">
-        <div class="content">
-            <div class="title"><span>About Me</span></div>
-            <div class="about-details">
-                <div class="left">
-                    <img src="images/1.png" alt=" Portfolio ">
-                </div>
-                <div class="right ">
-                    <div class="topic ">I'm Waheed Chitapure</div>
-                    <p>Open for new opportunity to show case my skills in an challenging environment. I am energetic,
-                        ambitious person who has developed a mature responsible approach to any task that i undertake. I
-                        am quick self learner.</p>
-                    <div class="button ">
-
-                        <a href="./waheed-resume.pdf " download><button> Download CV </button></a>
-                    </div>
-                </div>
-            </div>
+      <div class="about__photo reveal-clip">
+        <img src="images/waheed.webp" alt="Waheed Chitapure in the office" loading="lazy" width="768" height="1024">
+        <div class="about__sticker mono">Hello 👋</div>
+      </div>
+      <div class="about__text">
+        <p class="label mono">01 — About</p>
+        <p class="about__big scrub-text">
+          I’m a front-end developer who loves turning designs into smooth, responsive React interfaces. At work I build dashboards, email-marketing tools and landing pages — and I use AI tools like Claude Code to build faster while I learn to build AI agents.
+        </p>
+        <ul class="values">
+          <li><b>Clean UI</b><span>Responsive, pixel-accurate interfaces</span></li>
+          <li><b>React-first</b><span>Components, hooks, reusable code</span></li>
+          <li><b>AI-powered</b><span>Claude Code, and learning AI agents</span></li>
+        </ul>
+        <div class="about__actions">
+          <a href="./waheed-resume.pdf" download class="btn magnetic"><span>Download CV</span> <i>↓</i></a>
+          <a href="#contact" class="btn btn--ghost magnetic"><span>Contact me</span> <i>→</i></a>
         </div>
+      </div>
     </section>
 
-
-    <!-- Skills -->
-    <section class="section skills" id="skills">
-        <div class="title">
-
-            <span>My Skills</span>
+    <!-- ============ NUMBERS ============ -->
+    <section class="numbers" aria-label="Numbers">
+      <div class="numbers__grid">
+        <div class="num">
+          <div class="num__value"><span class="odo" data-odo="4">4</span><sup>+</sup></div>
+          <p class="num__calc mono">calculating…</p>
+          <p class="num__label">Years working on the web</p>
         </div>
-
-        <div class="skills-center container">
-            <div class="skills-left" data-aos="fade-right">
-                <div class="skills-box">
-                    <h4>HTML5</h4>
-                    <div class="skills-ilt">
-                        <div class="skills-bar html"></div>
-                        <span>85%</span>
-                    </div>
-                </div>
-                <div class="skills-box">
-                    <h4>CSS</h4>
-                    <div class="skills-ilt">
-                        <div class="skills-bar css"></div>
-                        <span>70%</span>
-                    </div>
-                </div>
-                <div class="skills-box">
-                    <h4>JavaScript</h4>
-                    <div class="skills-ilt">
-                        <div class="skills-bar javascript"></div>
-                        <span>69%</span>
-                    </div>
-                </div>
-                <div class="skills-box">
-                    <h4>Ractjs</h4>
-                    <div class="skills-ilt">
-                        <div class="skills-bar javascript"></div>
-                        <span>59%</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="right" data-aos="fade-left">
-                <div class="topic">
-
-                    My Experience
-                </div>
-
-                <div class="position">
-                  1.  Web Developer.
-
-                </div>
-                <div class="from">
-                    (March 2021 &nbsp; to &nbsp; April 2021)
-                </div>
-                <div class="firm">
-                    <a href="https://www.amazebasket.in/"> <b>www.AmazeBasket.in </b> </a>
-                </div>
-
-                <div class="resposibilites">
-                    <b> Responsibilities :</b>
-
-                </div>
-
-                <ul>
-                    <li> Build reusable code and libraries for future use.</li>
-                    <li>Ensure the technical feasibility of UI/UX designs Design</li>
-                    <li>Dynamic page using HTML, CSS , jQuery and javaScript</li>
-
-                    <span class="moretext">
-                        <li> Optimizing applications for maximum speed.</li>
-                        <li>Working on Authentication and Real time database with Firebase.</li>
-                        <li> Creating modular, responsive templates using modern CSS techniques and javaScript
-                            libraries.</li>
-                    </span>
-                </ul>
-
-                <a class="moreless-button" href="#more">Read more</a>
-
-
-
-
-                <div class="position">
-                 2.   Web Developer.
-                </div>
-                <div class="from">
-                    (March 2021 &nbsp; to &nbsp; April 2021)
-                </div>
-                <div class="firm">
-                    <a href="https://www.infishops.com/"> <b>www.InfiShops.com </b> </a>
-                </div>
-
-                <div class="resposibilites">
-                    <b> Responsibilities :</b>
-
-                </div>
-
-                <ul>
-                    <li> Based on wire-frames and design created HTML-CSS
-                        templates for Desktop and Mobile site.</li>
-                    <li>Cross Browser compatibility testing was performed.</li>
-                    <li>Troubleshoot style issues, browser compatibility issues.</li>
-
-                    <span class="moretext">
-
-                        
-                        <li>Identified and eliminated website bugs to improve user
-                            experience.</li>
-                        <li>Participate and provide input in code optimization and performance
-                            related discussions.</li>
-                    </span>
-
-                </ul>
-
-
-
-
-
-
-
-
-
-                <a class="moreless-button" href="#more">Read more</a>
-
-
-
-            </div>
+        <div class="num">
+          <div class="num__value"><span class="odo" data-odo="100">100</span><sup>+</sup></div>
+          <p class="num__calc mono">calculating…</p>
+          <p class="num__label">Landing pages &amp; EDMs designed and built</p>
         </div>
+        <div class="num">
+          <div class="num__value"><span class="odo" data-odo="5">5</span><sup>L+</sup></div>
+          <p class="num__calc mono">calculating…</p>
+          <p class="num__label">Email records handled in my React dashboards</p>
+        </div>
+        <div class="num">
+          <div class="num__value"><span class="odo" data-odo="3">3</span><sup>+</sup></div>
+          <p class="num__calc mono">calculating…</p>
+          <p class="num__label">Email marketing platforms I have worked on</p>
+        </div>
+      </div>
     </section>
 
+    <!-- ============ WORK (horizontal) ============ -->
+    <section class="work" id="work">
+      <div class="work__head">
+        <p class="label mono">02 — Selected projects</p>
+        <h2>Things I've <span class="serif">built</span></h2>
+      </div>
 
+      <div class="work__pin">
+        <div class="work__track">
 
-    <!-- Contact -->
-    <section class="section contact" id="contact">
-
-        <div class="title">
-
-            <span>Contact me</span>
-        </div>
-
-        <div class="contact-center container">
-            <div class="left" data-aos="fade-down-right">
-
-                <div class="topic">
-
-
+          <!-- 1 Lead IQ -->
+          <article class="card" data-cursor>
+            <div class="card__visual v-dash">
+              <div class="mock">
+                <div class="mock__top"><i></i><i></i><i></i></div>
+                <div class="mock__body">
+                  <div class="mock__side"><b></b><b></b><b></b><b></b></div>
+                  <div class="mock__main">
+                    <div class="kpis"><span>1,284<small>Leads</small></span><span>62%<small>Qualified</small></span><span>318<small>Checked</small></span></div>
+                    <div class="bars"><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:55%"></i><i style="--h:90%"></i><i style="--h:65%"></i><i style="--h:80%"></i><i style="--h:45%"></i></div>
+                  </div>
                 </div>
-
-                <div class="left-icons">
-                    <span class="icon"><i class="fas fa-user"></i></span>
-                    <span class="content">
-                        <h3>Name</h3>
-                        <span>Waheed Chitapure</span>
-                    </span>
-                </div>
-
-                <div class="left-icons">
-                    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-                    <span class="content">
-                        <h3>Address</h3>
-                        <span>Pune</span>
-                    </span>
-                </div>
-
-                <div class="left-icons">
-                    <span class="icon"><i class="fas fa-envelope"></i></span>
-                    <span class="content">
-                        <h3>Email</h3>
-                        <span>wchitapure@gmail.com</span>
-                    </span>
-                </div>
+              </div>
             </div>
-            <div class="right" data-aos="fade-up-left">
-                <form class="form" action="https://formcarry.com/s/daSmPvcQhI4" method="POST">
-
-                    <div class="topic">
-
-                        Message me
-                    </div>
-                    <div>
-                        <input type="text" name="name" placeholder="Name" />
-                        <input type="email" name="email" placeholder="Email" required />
-                    </div>
-                    <input type="text" name="subject" placeholder="Subject" />
-                    <textarea cols="10" name="message" rows="6" placeholder="Message"></textarea>
-
-
-                    <div class="btn">
-
-                        <button type="submit"> Send message</button>
-                    </div>
-                </form>
+            <div class="card__info">
+              <span class="card__no mono">01 · React dashboard</span>
+              <h3>Lead IQ — Lead Management</h3>
+              <ul class="points">
+                <li>A React interface where agents, team leads and quality each get their own clean screens</li>
+                <li>Forms, filters, tables, bulk upload and Excel export, all kept simple to use</li>
+                <li>Built with AI-assisted development (Claude Code)</li>
+              </ul>
+              <ul class="tags mono"><li>React</li><li>Node.js</li><li>SQL</li><li>Claude Code</li></ul>
             </div>
+          </article>
+
+          <!-- 2 Suppression tool -->
+          <article class="card" data-cursor>
+            <div class="card__visual v-sup">
+              <div class="sup">
+                <div class="sup__search mono">🔍 john@acme-corp.com</div>
+                <div class="sup__res bad"><b>● Found</b><span>Suppressed — do not mail</span></div>
+                <div class="sup__res ok"><b>● Not found</b><span>safe@client.com</span></div>
+                <div class="sup__count mono">12,48,305 emails indexed</div>
+              </div>
+            </div>
+            <div class="card__info">
+              <span class="card__no mono">02 · React tool</span>
+              <h3>Suppression Search Tool</h3>
+              <ul class="points">
+                <li>A React dashboard for suppression lists with lakhs of emails, too big to open in Excel</li>
+                <li>Data is loaded into a database; any email or domain is found from the search box in a second</li>
+                <li>Check a campaign list against suppression before it goes out</li>
+              </ul>
+              <ul class="tags mono"><li>React</li><li>SQL database</li><li>CSV import</li></ul>
+            </div>
+          </article>
+
+          <!-- 3 LP + EDM -->
+          <article class="card" data-cursor>
+            <div class="card__visual v-edm">
+              <div class="edm">
+                <div class="edm__bar"></div>
+                <div class="edm__img"></div>
+                <b></b><b></b><b class="s"></b>
+                <span>Read the report →</span>
+              </div>
+            </div>
+            <div class="card__info">
+              <span class="card__no mono">03 · Web design &amp; front-end</span>
+              <h3>Landing Pages &amp; EDMs</h3>
+              <ul class="points">
+                <li>Most of my daily work: designing and coding landing pages and EDM emails for B2B campaigns</li>
+                <li>Responsive, pixel-accurate layouts with forms, consent and tracking</li>
+                <li>Emails tested for Outlook, Gmail and mobile</li>
+              </ul>
+              <ul class="tags mono"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Responsive</li></ul>
+            </div>
+          </article>
+
+          <!-- 4 Mailchimp dashboard -->
+          <article class="card" data-cursor>
+            <div class="card__visual v-mail">
+              <div class="mail">
+                <div class="mail__row"><b>Campaign</b><b>Open</b><b>Click</b></div>
+                <div class="mail__row"><span>Q4 Newsletter</span><span>41%</span><span class="up">8.2%</span></div>
+                <div class="mail__row"><span>Product Launch</span><span>37%</span><span class="up">6.9%</span></div>
+                <div class="mail__row"><span>Webinar Invite</span><span>29%</span><span>4.1%</span></div>
+                <div class="donut"></div>
+              </div>
+            </div>
+            <div class="card__info">
+              <span class="card__no mono">04 · React dashboard</span>
+              <h3>Email Analytics Dashboard</h3>
+              <ul class="points">
+                <li>Brings Mailchimp campaign stats into one filterable report</li>
+                <li>One-click export instead of many separate CSV downloads</li>
+                <li>Opens, clicks and audience growth at a glance</li>
+              </ul>
+              <ul class="tags mono"><li>Mailchimp API</li><li>Dashboard</li><li>Export</li></ul>
+            </div>
+          </article>
+
+          <!-- 5 AI lead automation -->
+          <article class="card" data-cursor>
+            <div class="card__visual v-auto">
+              <div class="term mono">
+                <p><span class="g">$</span> agent run --campaign Q4</p>
+                <p>✓ read campaign spec</p>
+                <p>✓ checked target accounts</p>
+                <p>✓ removed suppressed emails</p>
+                <p>✓ verified contacts</p>
+                <p>✓ lead report ready</p>
+                <p class="blink">_</p>
+              </div>
+            </div>
+            <div class="card__info">
+              <span class="card__no mono">05 · AI agents · In progress</span>
+              <h3>AI Lead Automation Agent</h3>
+              <ul class="points">
+                <li>Built with Claude Code: reads a campaign brief, finds and filters contacts, verifies emails and prepares the lead file</li>
+                <li>Designed to also draft landing pages and check lead quality</li>
+                <li>Dry-run first on small data, so no credits are wasted</li>
+              </ul>
+              <ul class="tags mono"><li>Claude Code</li><li>AI agents</li><li>Node.js</li><li>Apollo</li></ul>
+            </div>
+          </article>
+
+          <!-- 6 Attendance -->
+          <article class="card" data-cursor>
+            <div class="card__visual v-att">
+              <div class="att">
+                <div class="att__clock mono">09:42</div>
+                <div class="att__btns"><span class="in">Punch In</span><span>Break</span><span>Punch Out</span></div>
+                <div class="att__rows">
+                  <p><b>Mon</b><i style="--w:92%"></i></p>
+                  <p><b>Tue</b><i style="--w:100%"></i></p>
+                  <p><b>Wed</b><i class="half" style="--w:50%"></i></p>
+                  <p><b>Thu</b><i style="--w:88%"></i></p>
+                </div>
+              </div>
+            </div>
+            <div class="card__info">
+              <span class="card__no mono">06 · Planned</span>
+              <h3>Attendance Tracker</h3>
+              <ul class="points">
+                <li>Punch in / out with a break timer for a team of 300</li>
+                <li>Half-day and break-limit rules built in</li>
+                <li>Daily and monthly reports</li>
+              </ul>
+              <ul class="tags mono"><li>React</li><li>SQL</li></ul>
+            </div>
+          </article>
+
+          <div class="card card--end">
+            <p class="serif">Have a role<br>or a project?</p>
+            <a href="#contact" class="btn btn--light magnetic"><span>Let's talk</span> <i>→</i></a>
+          </div>
         </div>
+      </div>
     </section>
 
+    <!-- ============ SKILLS ============ -->
+    <section class="skills" id="skills">
+      <div class="skills__head">
+        <p class="label mono">03 — Skills</p>
+        <h2>What I <span class="serif">work</span> with</h2>
+      </div>
 
-
-
-
-
-    <!-- Footer Section Start -->
-    <footer>
-        <div class="text ">
-            <span>Created By <a href="# ">Waheed Chitapure</a> | © 2022 All Rights Reserved.</span>
+      <div class="skills__grid">
+        <div class="skill-card">
+          <span class="skill-card__icon">⚛</span>
+          <h3>Frontend &amp; UI</h3>
+          <p>My main focus: fast, clean, responsive interfaces.</p>
+          <ul class="chips"><li>React.js</li><li>Hooks &amp; state</li><li>JavaScript ES6+</li><li>HTML5</li><li>CSS3</li><li>Flexbox &amp; Grid</li><li>Responsive design</li><li>GSAP animation</li><li>UI design</li></ul>
         </div>
-    </footer>
+        <div class="skill-card">
+          <span class="skill-card__icon">✉</span>
+          <h3>Email Marketing Tech</h3>
+          <p>The tools B2B campaigns run on.</p>
+          <ul class="chips"><li>Mailchimp</li><li>Benchmark</li><li>Brevo</li><li>EDM / HTML email</li><li>Landing pages</li><li>Click &amp; impression tags</li><li>Suppression &amp; lead checks</li></ul>
+        </div>
+        <div class="skill-card">
+          <span class="skill-card__icon">🤖</span>
+          <h3>AI &amp; Automation</h3>
+          <p>Learning fast, already using it at work.</p>
+          <ul class="chips"><li>Claude Code</li><li>AI agents</li><li>Gemini</li><li>Prompt writing</li><li>n8n</li><li>Automation scripts</li></ul>
+        </div>
+        <div class="skill-card">
+          <span class="skill-card__icon">🌐</span>
+          <h3>Servers, Domains &amp; Hosting</h3>
+          <p>I've managed these for my company.</p>
+          <ul class="chips"><li>Hosting &amp; servers</li><li>Domains &amp; DNS</li><li>Company email setup</li><li>FTP deploys</li><li>Website fixes</li></ul>
+        </div>
+        <div class="skill-card">
+          <span class="skill-card__icon">🗄</span>
+          <h3>Data &amp; Backend</h3>
+          <p>Working knowledge, growing with projects.</p>
+          <ul class="chips"><li>SQL basics</li><li>Node.js basics</li><li>PHP basics</li><li>REST APIs</li><li>Excel / CSV</li></ul>
+        </div>
+      </div>
 
+      <div class="levels-wrap">
+        <p class="levels__title mono">My comfort level</p>
+        <div class="levels">
+          <div class="level level--strong">
+            <p class="level__tag mono"><i></i> Strong</p>
+            <ul><li>HTML &amp; CSS</li><li>JavaScript</li><li>Responsive web design</li><li>Landing pages &amp; EDMs</li></ul>
+          </div>
+          <div class="level level--ok">
+            <p class="level__tag mono"><i></i> Comfortable</p>
+            <ul><li>React.js</li><li>GSAP animation</li><li>AI-assisted development</li><li>Email marketing tools</li></ul>
+          </div>
+          <div class="level level--learn">
+            <p class="level__tag mono"><i></i> Learning</p>
+            <ul><li>TypeScript</li><li>Building AI agents</li><li>Node.js &amp; SQL basics</li></ul>
+          </div>
+        </div>
+      </div>
 
+      <div class="learning">
+        <div class="learning__head">
+          <span class="pulse"></span>
+          <div>
+            <p class="mono">Currently levelling up</p>
+            <h3>What I’m learning right now</h3>
+          </div>
+        </div>
+        <ul class="learning__list">
+          <li><span class="mono">01</span><b>TypeScript</b><small>Type-safe React code</small></li>
+          <li><span class="mono">02</span><b>Next.js</b><small>Routing &amp; server rendering</small></li>
+          <li><span class="mono">03</span><b>AI Agents</b><small>Claude Code workflows</small></li>
+          <li><span class="mono">04</span><b>React Testing</b><small>Tests for components</small></li>
+          <li><span class="mono">05</span><b>DSA</b><small>Problem solving</small></li>
+        </ul>
+      </div>
+    </section>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- ============ CODE SHOWCASE ============ -->
+    <section class="code" id="code">
+      <div class="code__head">
+        <p class="label mono">04 — Code</p>
+        <h2>A peek at <span class="serif">the code</span></h2>
+        <p class="code__sub">Small examples of how I write React and CSS.</p>
+      </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Typeit -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/7.0.4/typeit.min.js"></script>
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+      <div class="editor">
+        <div class="editor__tabs" role="tablist">
+          <button role="tab" class="is-active" data-tab="react">SuppressionSearch.jsx</button>
+          <button role="tab" data-tab="css">cards.css</button>
+          <button role="tab" data-tab="node">check-list.js</button>
+        </div>
 
-    <script src="./index.js "></script>
-    <script>
-        AOS.init();
-    </script>
+<pre class="editor__pane is-active" data-pane="react"><code><span class="k">import</span> { useState } <span class="k">from</span> <span class="s">"react"</span>;
 
+<span class="k">export default function</span> <span class="f">SuppressionSearch</span>() {
+  <span class="k">const</span> [email, setEmail] = <span class="f">useState</span>(<span class="s">""</span>);
+  <span class="k">const</span> [result, setResult] = <span class="f">useState</span>(<span class="n">null</span>);
 
+  <span class="k">async function</span> <span class="f">search</span>() {
+    <span class="k">const</span> res = <span class="k">await</span> <span class="f">fetch</span>(<span class="s">`/api/suppression?email=${email}`</span>);
+    <span class="f">setResult</span>(<span class="k">await</span> res.<span class="f">json</span>());
+  }
+
+  <span class="k">return</span> (
+    &lt;<span class="t">div</span>&gt;
+      &lt;<span class="t">input</span> value={email} onChange={(e) =&gt; <span class="f">setEmail</span>(e.target.value)} /&gt;
+      &lt;<span class="t">button</span> onClick={search}&gt;Search&lt;/<span class="t">button</span>&gt;
+      {result &amp;&amp; &lt;<span class="t">p</span>&gt;{result.found ? <span class="s">"Suppressed"</span> : <span class="s">"Safe to mail"</span>}&lt;/<span class="t">p</span>&gt;}
+    &lt;/<span class="t">div</span>&gt;
+  );
+}</code></pre>
+
+<pre class="editor__pane" data-pane="css"><code><span class="c">/* responsive card grid - no media queries needed */</span>
+<span class="t">.cards</span> {
+  <span class="f">display</span>: grid;
+  <span class="f">grid-template-columns</span>: <span class="f">repeat</span>(auto-fit, <span class="f">minmax</span>(<span class="f">min</span>(<span class="n">100%</span>, <span class="n">260px</span>), <span class="n">1fr</span>));
+  <span class="f">gap</span>: <span class="f">clamp</span>(<span class="n">12px</span>, <span class="n">2vw</span>, <span class="n">24px</span>);
+}
+
+<span class="t">.card</span> {
+  <span class="f">padding</span>: <span class="f">clamp</span>(<span class="n">16px</span>, <span class="n">3vw</span>, <span class="n">32px</span>);
+  <span class="f">border-radius</span>: <span class="n">22px</span>;
+  <span class="f">transition</span>: transform <span class="n">.4s</span>, box-shadow <span class="n">.4s</span>;
+}
+<span class="t">.card:hover</span> { <span class="f">transform</span>: <span class="f">translateY</span>(<span class="n">-6px</span>); }
+
+<span class="c">/* heading that scales smoothly with the screen */</span>
+<span class="t">h2</span> { <span class="f">font-size</span>: <span class="f">clamp</span>(<span class="n">2.4rem</span>, <span class="n">1.4rem</span> + <span class="n">5vw</span>, <span class="n">6rem</span>); }</code></pre>
+
+<pre class="editor__pane" data-pane="node"><code><span class="k">const</span> fs = <span class="f">require</span>(<span class="s">"fs"</span>);
+
+<span class="c">// read both lists (one email per line)</span>
+<span class="k">const</span> suppressed = <span class="k">new</span> <span class="t">Set</span>(
+  fs.<span class="f">readFileSync</span>(<span class="s">"suppression.csv"</span>, <span class="s">"utf8"</span>).<span class="f">split</span>(<span class="s">"\n"</span>).<span class="f">map</span>((e) =&gt; e.<span class="f">trim</span>().<span class="f">toLowerCase</span>())
+);
+<span class="k">const</span> campaign = fs.<span class="f">readFileSync</span>(<span class="s">"campaign.csv"</span>, <span class="s">"utf8"</span>).<span class="f">split</span>(<span class="s">"\n"</span>);
+
+<span class="c">// keep only the safe ones</span>
+<span class="k">const</span> safe = campaign.<span class="f">filter</span>((e) =&gt; !suppressed.<span class="f">has</span>(e.<span class="f">trim</span>().<span class="f">toLowerCase</span>()));
+
+fs.<span class="f">writeFileSync</span>(<span class="s">"safe-list.csv"</span>, safe.<span class="f">join</span>(<span class="s">"\n"</span>));
+console.<span class="f">log</span>(<span class="s">`${campaign.length - safe.length} removed, ${safe.length} safe`</span>);</code></pre>
+      </div>
+    </section>
+
+    <!-- ============ HOW I WORK ============ -->
+    <section class="process">
+      <div class="process__head">
+        <p class="label mono">05 — How I work</p>
+        <h2>From idea to <span class="serif">interface</span></h2>
+      </div>
+      <div class="process__grid">
+        <div class="pstep"><span class="mono">01</span><h3>Understand</h3><p>Sit with the team, see the real daily problem.</p></div>
+        <div class="pstep"><span class="mono">02</span><h3>Design the UI</h3><p>Sketch simple, clear screens before writing code.</p></div>
+        <div class="pstep"><span class="mono">03</span><h3>Build in React</h3><p>Reusable components, with Claude Code to move faster.</p></div>
+        <div class="pstep"><span class="mono">04</span><h3>Test every screen</h3><p>Check phone, tablet, desktop and different browsers.</p></div>
+        <div class="pstep"><span class="mono">05</span><h3>Ship &amp; improve</h3><p>Deploy, collect feedback, keep making it simpler.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ JOURNEY ============ -->
+    <section class="journey" id="journey">
+      <div class="journey__head">
+        <p class="label mono">06 — Experience</p>
+        <h2>Where I've <span class="serif">been</span></h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline__line"><i></i></div>
+
+        <div class="step">
+          <span class="step__when mono">Now</span>
+          <h3>Frontend Developer — Pangea Global Services</h3>
+          <p>Designing and building React dashboards (Lead IQ, a suppression search tool, a Mailchimp analytics dashboard), responsive landing pages and EDMs for B2B campaigns, and AI lead-automation agents with Claude Code. Also manage servers, domains, hosting and the company email tools.</p>
+        </div>
+        <div class="step">
+          <span class="step__when mono">2021</span>
+          <h3>Web Developer — <a href="https://www.infishops.com/" target="_blank" rel="noopener">InfiShops.com</a></h3>
+          <p>Turned wireframes into responsive templates for desktop &amp; mobile, fixed cross-browser bugs and worked on performance.</p>
+        </div>
+        <div class="step">
+          <span class="step__when mono">2021</span>
+          <h3>Web Developer — <a href="https://www.amazebasket.in/" target="_blank" rel="noopener">AmazeBasket.in</a></h3>
+          <p>Built dynamic pages in JavaScript, reusable components, and Firebase authentication with a real-time database.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <p class="label mono">07 — Contact</p>
+      <h2 class="contact__title">
+        <span class="line"><span class="word">Let's build</span></span>
+        <span class="line"><span class="word serif">something good.</span></span>
+      </h2>
+
+      <div class="contact__grid">
+        <div class="contact__info">
+          <a class="contact__mail magnetic" href="mailto:wchitapure@gmail.com">wchitapure@gmail.com</a>
+          <p class="mono">Pune, India · IST (UTC+5:30)</p>
+          <div class="socials">
+            <a href="https://www.linkedin.com/in/waheedchitapure/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://github.com/waheedchitapure" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://www.instagram.com/codewithwaheed/" target="_blank" rel="noopener">Instagram ↗</a>
+          </div>
+        </div>
+
+        <form class="form" action="https://formcarry.com/s/daSmPvcQhI4" method="POST">
+          <label><span>Your name</span><input type="text" name="name" required></label>
+          <label><span>Email</span><input type="email" name="email" required></label>
+          <label class="full"><span>Subject</span><input type="text" name="subject"></label>
+          <label class="full"><span>Message</span><textarea name="message" rows="4" required></textarea></label>
+          <button type="submit" class="btn magnetic"><span>Send message</span> <i>→</i></button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__big" aria-hidden="true">WAHEED</div>
+    <div class="footer__row mono">
+      <span>© <span id="year"></span> Waheed Chitapure</span>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="./main.js"></script>
 </body>
-
 </html>
-
