@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./interactive.css">
 </head>
 <body>
 
@@ -23,6 +24,24 @@
     <div class="loader__count"><span id="count">0</span>%</div>
   </div>
 
+  <div class="progress" aria-hidden="true"><i></i></div>
+
+  <!-- Command palette -->
+  <div class="pal" id="pal" hidden>
+    <div class="pal__backdrop" data-close-palette></div>
+    <div class="pal__box" role="dialog" aria-modal="true" aria-label="Command menu">
+      <label class="pal__search">
+        <span class="mono">⌘</span>
+        <input id="palInput" type="text" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" aria-label="Search commands" aria-controls="palList">
+        <kbd class="mono">Esc</kbd>
+      </label>
+      <ul class="pal__list" id="palList" role="listbox" data-lenis-prevent></ul>
+      <p class="pal__foot mono"><span>↑ ↓ to move</span><span>Enter to open</span></p>
+    </div>
+  </div>
+
+  <div class="toast mono" id="toast" role="status" aria-live="polite"></div>
+
   <div class="cursor" aria-hidden="true"><span class="cursor__label">View</span></div>
 
   <header class="nav">
@@ -30,9 +49,11 @@
     <nav class="nav__links" aria-label="Main">
       <a href="#about">About</a>
       <a href="#work">Projects</a>
+      <a href="#demos">Demos</a>
       <a href="#skills">Skills</a>
       <a href="#code">Code</a>
       <a href="#journey">Experience</a>
+      <button class="nav__k mono" type="button" data-open-palette aria-label="Open command menu"><kbd>Ctrl</kbd><kbd>K</kbd></button>
       <a href="#contact" class="nav__cta magnetic">Hire me</a>
     </nav>
     <button class="nav__burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
@@ -41,6 +62,7 @@
   <div class="mobile-menu" aria-hidden="true">
     <a href="#about">About</a>
     <a href="#work">Projects</a>
+    <a href="#demos">Demos</a>
     <a href="#skills">Skills</a>
     <a href="#code">Code</a>
     <a href="#journey">Experience</a>
@@ -322,10 +344,115 @@
       </div>
     </section>
 
+    <!-- ============ PLAYGROUND (live demos) ============ -->
+    <section class="play" id="demos">
+      <div class="play__head">
+        <p class="label mono">03 — Try it yourself</p>
+        <h2>Live <span class="serif">demos</span></h2>
+        <p class="play__sub">Small working versions of my real projects. They run in your browser on <b>fake sample data</b>; the real tools run on company data.</p>
+      </div>
+
+      <div class="play__box">
+        <div class="play__tabs" role="tablist" aria-label="Demos">
+          <button role="tab" aria-selected="true" class="is-active" data-demo="sup"><span class="mono">01</span> Suppression search</button>
+          <button role="tab" aria-selected="false" data-demo="ana"><span class="mono">02</span> Campaign analytics</button>
+          <button role="tab" aria-selected="false" data-demo="agent"><span class="mono">03</span> Publish agent</button>
+        </div>
+
+        <!-- Demo 1: suppression search -->
+        <div class="demo is-active" data-panel="sup" role="tabpanel">
+          <div class="demo__intro">
+            <h3>Find one email in 1,00,000 records</h3>
+            <p>Type an email or a domain. The search waits until you stop typing (debounce), then checks an in-memory index.</p>
+          </div>
+          <div class="ss">
+            <label class="ss__field">
+              <span class="mono">🔍</span>
+              <input id="ssInput" type="text" placeholder="e.g. john.smith@acme-corp.com or acme-corp.com" autocomplete="off" spellcheck="false" aria-label="Search email or domain">
+              <span class="ss__status mono" id="ssStatus">idle</span>
+            </label>
+            <div class="ss__try mono">Try:
+              <button data-try>priya.n3@globex.io</button>
+              <button data-try>safe.person@gmail.com</button>
+              <button data-try>initech.co</button>
+            </div>
+            <div class="ss__result" id="ssResult" aria-live="polite">
+              <p class="ss__empty">Results will show here.</p>
+            </div>
+            <div class="ss__meta mono"><span id="ssCount">Building index…</span><span id="ssTime"></span></div>
+          </div>
+        </div>
+
+        <!-- Demo 2: analytics -->
+        <div class="demo" data-panel="ana" role="tabpanel" hidden>
+          <div class="demo__intro">
+            <h3>Three email platforms, one chart</h3>
+            <p>Switch platforms on and off, change the metric, hover the chart, and export what you see as CSV.</p>
+          </div>
+          <div class="ana">
+            <div class="ana__controls">
+              <div class="ana__chips" id="anaPlatforms">
+                <button class="is-on" data-p="Mailchimp" style="--c:#d4ff3f">Mailchimp</button>
+                <button class="is-on" data-p="Benchmark" style="--c:#b46cff">Benchmark</button>
+                <button class="is-on" data-p="Brevo" style="--c:#4fd1c5">Brevo</button>
+              </div>
+              <div class="ana__seg" id="anaMetric" role="group" aria-label="Metric">
+                <button class="is-on" data-m="open">Open rate</button>
+                <button data-m="click">Click rate</button>
+                <button data-m="bounce">Bounce rate</button>
+              </div>
+            </div>
+            <div class="ana__kpis" id="anaKpis"></div>
+            <div class="ana__chart">
+              <svg id="anaSvg" viewBox="0 0 640 260" role="img" aria-label="Line chart of campaign rates by month"></svg>
+              <div class="ana__tip mono" id="anaTip" hidden></div>
+            </div>
+            <div class="ana__foot">
+              <span class="mono">Sample data · last 6 months</span>
+              <button class="btn btn--small" id="anaCsv"><span>Export CSV</span> <i>↓</i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demo 3: agent -->
+        <div class="demo" data-panel="agent" role="tabpanel" hidden>
+          <div class="demo__intro">
+            <h3>Brief in, live page out</h3>
+            <p>Edit the brief and press Run. This is a simulation of the steps my real agent does.</p>
+          </div>
+          <div class="ag">
+            <div class="ag__left">
+              <label class="ag__brief">
+                <span class="mono">BRIEF</span>
+                <input id="agTitle" type="text" value="2026 Cloud Security Report" maxlength="48" aria-label="Campaign title">
+                <textarea id="agDesc" rows="3" maxlength="140" aria-label="Campaign description">Download the free report and see how 500 IT leaders protect their cloud.</textarea>
+              </label>
+              <button class="btn btn--small" id="agRun"><span>Run agent</span> <i>▶</i></button>
+              <ol class="ag__steps mono" id="agSteps">
+                <li>Read the brief</li>
+                <li>Build landing page &amp; email</li>
+                <li>Save lead form to backend</li>
+                <li>Upload to server (FTP)</li>
+                <li>Live link ready</li>
+              </ol>
+            </div>
+            <div class="ag__right">
+              <div class="ag__browser">
+                <div class="ag__bar"><i></i><i></i><i></i><span class="mono" id="agUrl">about:blank</span></div>
+                <div class="ag__page" id="agPage">
+                  <p class="ag__wait mono">Press “Run agent” to build the page</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ SKILLS ============ -->
     <section class="skills" id="skills">
       <div class="skills__head">
-        <p class="label mono">03 — Skills</p>
+        <p class="label mono">04 — Skills</p>
         <h2>What I <span class="serif">work</span> with</h2>
       </div>
 
@@ -401,7 +528,7 @@
     <!-- ============ CODE SHOWCASE ============ -->
     <section class="code" id="code">
       <div class="code__head">
-        <p class="label mono">04 — Code</p>
+        <p class="label mono">05 — Code</p>
         <h2>A peek at <span class="serif">the code</span></h2>
         <p class="code__sub">Small examples of how I write React and CSS.</p>
       </div>
@@ -469,7 +596,7 @@ console.<span class="f">log</span>(<span class="s">`${campaign.length - safe.len
     <!-- ============ HOW I WORK ============ -->
     <section class="process">
       <div class="process__head">
-        <p class="label mono">05 — How I work</p>
+        <p class="label mono">06 — How I work</p>
         <h2>From idea to <span class="serif">interface</span></h2>
       </div>
       <div class="process__grid">
@@ -484,7 +611,7 @@ console.<span class="f">log</span>(<span class="s">`${campaign.length - safe.len
     <!-- ============ JOURNEY ============ -->
     <section class="journey" id="journey">
       <div class="journey__head">
-        <p class="label mono">06 — Experience</p>
+        <p class="label mono">07 — Experience</p>
         <h2>Where I've <span class="serif">been</span></h2>
       </div>
       <div class="timeline">
@@ -510,7 +637,7 @@ console.<span class="f">log</span>(<span class="s">`${campaign.length - safe.len
 
     <!-- ============ CONTACT ============ -->
     <section class="contact" id="contact">
-      <p class="label mono">07 — Contact</p>
+      <p class="label mono">08 — Contact</p>
       <h2 class="contact__title">
         <span class="line"><span class="word">Let's build</span></span>
         <span class="line"><span class="word serif">something good.</span></span>
@@ -519,6 +646,7 @@ console.<span class="f">log</span>(<span class="s">`${campaign.length - safe.len
       <div class="contact__grid">
         <div class="contact__info">
           <a class="contact__mail magnetic" href="mailto:wchitapure@gmail.com">wchitapure@gmail.com</a>
+          <button class="copy-mail mono" type="button" data-copy-email>Copy email ⧉</button>
           <p class="mono">Pune, India · IST (UTC+5:30)</p>
           <div class="socials">
             <a href="https://www.linkedin.com/in/waheedchitapure/" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -550,5 +678,6 @@ console.<span class="f">log</span>(<span class="s">`${campaign.length - safe.len
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="./main.js"></script>
+  <script src="./interactive.js"></script>
 </body>
 </html>

@@ -49,6 +49,7 @@
   let lenis = null;
   if (typeof window.Lenis !== "undefined") {
     lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+    window.__lenis = lenis; // used by the command palette (interactive.js)
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add((t) => lenis.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
